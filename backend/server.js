@@ -12,7 +12,7 @@ const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json({ limit: "1mb" }));
@@ -226,7 +226,7 @@ app.use((err, req, res, next) => {
     message: err.message || "The uploaded file could not be processed."
   });
 });
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+ app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
+
