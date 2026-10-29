@@ -35,8 +35,9 @@ function App() {
       formData.append("resume", resume);
       formData.append("jobDescription", jobDescription);
 
+     
       const response = await axios.post(
-        "http://localhost:5000/analyze",
+       "https://ai-resume-analyzer-backend-raw7.onrender.com/analyze",
         formData
       );
 
@@ -50,6 +51,7 @@ function App() {
       if (score) {
         setMatchScore(Math.min(100, Number(score[1])));
       }
+
     } catch (err) {
       setError(
         err.response?.data?.message ||
